@@ -7,8 +7,8 @@ public class vrachtAuto extends Product{
     private int laadVermogen;
     private int Gewicht;
 
-    public vrachtAuto(String naam, ArrayList<verhuurObserver> observers, String Omschrijving, org.example.productVerhuur productVerhuur, int Gewicht, int laadVermogen) {
-        super(naam, observers, Omschrijving, productVerhuur);
+    public vrachtAuto(String naam, String Omschrijving, org.example.productVerhuur productVerhuur, int laadVermogen, int Gewicht) {
+        super(naam, Omschrijving, productVerhuur);
         this.laadVermogen = laadVermogen;
         this.Gewicht = Gewicht;
     }
@@ -16,16 +16,29 @@ public class vrachtAuto extends Product{
 
     @Override
     void inform() {
-
+        System.out.println("\u001B[31m! \u001B[33mProduct gereserveerd en kan worden opgehaald.");
     }
 
     @Override
-    void notifyObservers() {
-
+    void notifyObservers(String update, Product product) {
+        Main.vm.setVerhuurUpdate(update, product);
     }
 
     @Override
-    void verhuur() {
+    void verhuur(Gebruiker gebruiker, Medewerker medewerker) {
+        getProductVerhuur().setVerhuurd(true);
+        getProductVerhuur().setGehuurdDoor(gebruiker);
+        getProductVerhuur().setVerhuurdDoor(medewerker);
+    }
 
+    public int getLaadVermogen() {
+        return laadVermogen;
+    }
+
+    public int getGewicht() {
+        return Gewicht;
     }
 }
+
+
+

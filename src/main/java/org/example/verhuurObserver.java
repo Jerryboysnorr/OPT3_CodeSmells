@@ -1,5 +1,7 @@
 package org.example;
 
 public interface verhuurObserver {
-    public static void verhuurUpdate(String verhuurUpdate){}
+    public void update(String verhuurUpdate, Product product);
 }
+
+

@@ -7,26 +7,25 @@ public class Main {
     public static Gebruiker huidigeGebruiker;
     public static Medewerker huidigeMedewerker;
     public static ArrayList<Product> producten = new ArrayList<>();
-
+    public static verhuurManager vm = new verhuurManager();
     /*
 
     TO DO:
 
-    OBSERVER PATTERN
-    TEMPLATE METHOD PATTERN
-    VERHUUR PRODUCT
-    RETURN PRODUCT
+    DETAILS MOETEN KUNNEN WORDEN INGEVULD
+    RETOUREN
     
      */
 
     public static void main(String[] args) {
+    vm.setObservers();
     Gebruiker gebruiker = new Gebruiker("Figgo", "ja");
     huidigeGebruiker = gebruiker;
     Medewerker medewerker = new Medewerker("jeroen", "okay");
     huidigeMedewerker = medewerker;
 
     producten.add(
-            new boorMachine("Boormachine", new ArrayList<verhuurObserver>(), "De eerste beste boormachine.", new productVerhuur("Nee nog niet", false, huidigeGebruiker, medewerker), "Siemens", "X1")
+            new boorMachine("Boormachine", "De eerste beste boormachine.", new productVerhuur(false, huidigeGebruiker, medewerker), "Siemens", "X1")
     );
 
     menu();

@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.Observer;
 
 abstract class Product {
-    private ArrayList<verhuurObserver> observers = new ArrayList<>();
     private String naam;
     private String Omschrijving;
     private productVerhuur productVerhuur;
 
-    public Product(String naam, ArrayList<verhuurObserver> observers, String Omschrijving, productVerhuur productVerhuur){
+    public Product(String naam, String Omschrijving, productVerhuur productVerhuur){
         this.naam = naam;
-        this.observers = observers;
         this.Omschrijving = Omschrijving;
         this.productVerhuur = productVerhuur;
     }
@@ -20,27 +18,21 @@ abstract class Product {
 
 
     abstract void inform();
-    abstract void notifyObservers();
-    abstract void verhuur();
+    abstract void notifyObservers(String update, Product product);
+    abstract void verhuur(Gebruiker gebruiker, Medewerker medewerker);
 
-    void verhuurProces(){
-
+    public final void verhuurProces(String update, Product product, Gebruiker gebruiker, Medewerker medewerker){
+       inform();
+       notifyObservers(update, product);
+       verhuur(gebruiker, medewerker);
     }
 
     public String getNaam() {
         return naam;
     }
-
     public org.example.productVerhuur getProductVerhuur() {
         return productVerhuur;
     }
-
-    public ArrayList<verhuurObserver> getObservers() {
-        return observers;
-    }
-
-
-
     public String getOmschrijving() {
         return Omschrijving;
     }
