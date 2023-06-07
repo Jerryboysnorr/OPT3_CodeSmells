@@ -25,15 +25,17 @@ public class productDetailScherm {
   System.out.println();
   System.out.println("\u001B[36m"+pro.getOmschrijving());
   System.out.println();
-  if(pro instanceof vrachtAuto){
-   vrachtAuto auto = (vrachtAuto) pro;
-   System.out.println("\u001B[34mGewicht: "+auto.getLaadVermogen()+"KG");
+  if(pro instanceof vrachtAuto auto){
+   System.out.println("\u001B[34mLaadvermogen: "+auto.getLaadVermogen()+"KG");
+   System.out.println("\u001B[34mGewicht: "+auto.getGewicht()+"KG");
   }
-  if(pro instanceof personenAuto){
-
+  if(pro instanceof personenAuto auto){
+   System.out.println("\u001B[34mMerk: "+auto.getMerk());
+   System.out.println("\u001B[34mGewicht: "+auto.getGewicht()+"KG");
   }
-  if(pro instanceof boorMachine){
-
+  if(pro instanceof boorMachine boor){
+   System.out.println("\u001B[34mType: "+boor.getType());
+   System.out.println("\u001B[34mMerk: "+boor.getMerk());
   }
   System.out.println("\u001B[33m==========================");
   System.out.println("\u001B[36mKies een van de volgende opties:");
