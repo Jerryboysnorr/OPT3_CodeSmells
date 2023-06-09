@@ -1,8 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Observer;
-
 abstract class Product {
     private String naam;
     private String Omschrijving;

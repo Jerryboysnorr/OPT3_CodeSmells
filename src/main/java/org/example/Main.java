@@ -19,13 +19,10 @@ public class Main {
 
     public static void main(String[] args) {
     vm.setObservers();
-    Gebruiker gebruiker = new Gebruiker("Figgo", "ja");
-    huidigeGebruiker = gebruiker;
-    Medewerker medewerker = new Medewerker("jeroen", "okay");
-    huidigeMedewerker = medewerker;
-
+    huidigeGebruiker = new Gebruiker("Figgo", "ja");
+    huidigeMedewerker = new Medewerker("jeroen", "okay");
     producten.add(
-            new boorMachine("Boormachine", "De eerste beste boormachine.", new productVerhuur(false, huidigeGebruiker, medewerker), "Siemens", "X1")
+            new boorMachine("Boormachine", "De eerste beste boormachine.", new productVerhuur(false, huidigeGebruiker, huidigeMedewerker), "Siemens", "X1")
     );
 
     menu();
