@@ -8,14 +8,6 @@ public class Main {
     public static Medewerker huidigeMedewerker;
     public static ArrayList<Product> producten = new ArrayList<>();
     public static verhuurManager vm = new verhuurManager();
-    /*
-
-    TO DO:
-
-    DETAILS MOETEN KUNNEN WORDEN INGEVULD
-    RETOUREN
-    
-     */
 
     public static void main(String[] args) {
     vm.setObservers();
@@ -28,28 +20,38 @@ public class Main {
     menu();
     }
 
-    public static void menu(){
+
+    public static void menu() {
         System.out.println();
         System.out.println();
         System.out.println("Kies een van de opties:");
-        System.out.println("Ingelogd als: "+huidigeGebruiker.getUsername());
+        System.out.println("Ingelogd als: " + huidigeGebruiker.getUsername());
         System.out.println("=================");
         System.out.println("1. Overzicht");
         System.out.println("2. Beheervenster");
         System.out.println("3. Uitloggen");
+
         Scanner scanner = new Scanner(System.in);
         String optie = scanner.nextLine();
-        if(optie.equals("1")){
-            productenOverzicht.showProducten();
-        }else{
-            if(optie.equals("2")){
-            productenBeheer.showProductSoorten();
-            }else{
-                if(optie.equals("3")){
-                System.out.println();
-                }
-            }
-        }
 
+        processMenuChoice(optie);
+    }
+
+    private static void processMenuChoice(String optie) {
+        switch (optie) {
+            case "1":
+                productenOverzicht.showProducten();
+                break;
+            case "2":
+                productenBeheer.showProductSoorten();
+                break;
+            case "3":
+                System.out.println("Uitloggen...");
+                break;
+            default:
+                System.out.println("Ongeldige optie, probeer opnieuw.");
+                menu();
+                break;
+        }
     }
 }
